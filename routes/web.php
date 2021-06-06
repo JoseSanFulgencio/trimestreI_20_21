@@ -16,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/modulos', [App\Http\Controllers\ModuloController::class, 'index'])->name('modulos');
+
+Route::get('/modulos/edit/{id}', [App\Http\Controllers\ModuloController::class, 'getModulo'])->middleware('auth');
+
+Route::put('/modulos', [App\Http\Controllers\ModuloController::class, 'putModulo']);
+
+Route::get('/ciclo/{id}/modulos', [App\Http\Controllers\ModuloController::class, 'getModulosDeUnCiclo']);

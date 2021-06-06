@@ -49886,8 +49886,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/alberto/Documentos/php/laravel/laradock/ciclosInformatica/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/alberto/Documentos/php/laravel/laradock/ciclosInformatica/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/trimestreI_20_21_forked/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/trimestreI_20_21_forked/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

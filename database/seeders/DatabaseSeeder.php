@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Especialidad;
+use App\Models\Ciclo;
+use App\Models\Modulo;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,8 +19,65 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        //
+        self::seedEspecialidades();
+        self::seedCiclos();
+        self::seedModulos();
+        self::seedUsers();
         Schema::enableForeignKeyConstraints();
+
+    }
+
+    private static function seedEspecialidades(){
+
+        Especialidad::truncate();
+
+        foreach( self::$arrayEspecialidades as $especialidad ) {
+            $e = new Especialidad;
+            $e->nombre = $especialidad;
+            $e->save();
+        }
+    }
+
+    private static function seedCiclos(){
+
+        Ciclo::truncate();
+
+        foreach( self::$arrayCiclos as $ciclo ) {
+            $e = new Ciclo;
+            $e->nombre = $ciclo["nombre"];
+            $e->grado = $ciclo["grado"];
+            $e->save();
+        }
+    }
+
+    private static function seedModulos(){
+
+        Modulo::truncate();
+
+        foreach( self::$arrayModulos as $modulo ) {
+            if($modulo["ciclo"] == 6) {
+                $e = new Modulo;
+                $e->nombre = $modulo["nombre"];
+                $e->especialidad_id = $modulo["especialidad"];
+                $e->ciclo_id = $modulo["ciclo"];
+                $e->save();
+            }
+        }
+    }
+
+    private static function seedUsers() {
+
+        $user1 = new User;
+        $user1->name = 'Jose';
+        $user1->email = '8686470@alu.murciaeduca.es';
+        $user1->password = bcrypt('password');
+        $user1->save();
+
+        $user2 = new User;
+        $user2->name = 'Juan';
+        $user2->email = '8686470@gmail.com';
+        $user2->password = bcrypt('password');
+        $user2->save();
     }
 
     private static $arrayEspecialidades = ['Informática', 'Sistemas y Aplicaciones Informáticas'];

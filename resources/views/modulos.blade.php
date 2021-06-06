@@ -16,35 +16,17 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($array as $modulo)
                         <tr>
-                            <th>Sistemas informáticos</th>
-                            <th>2</th>
+                            <th>{{$modulo->nombre}}</th>
+                            <th>{{$modulo->especialidad_id}}</th>
                         </tr>
-                        <tr>
-                            <th>Bases de Datos</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th>Programación</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th>Entornos de desarrollo</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th>Lenguajes de marcas y sistemas de gestión de información</th>
-                            <th>1</th>
-                        </tr>
-                        <tr>
-                            <th>...</th>
-                            <th>...</th>
-                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
                 <div class="card-footer">
-                    <a href="/" class="button medium scrolly">Home</a>
+                    <a href="/home" class="button medium scrolly">Home</a>
                 </div>
             </div>
         </div>
