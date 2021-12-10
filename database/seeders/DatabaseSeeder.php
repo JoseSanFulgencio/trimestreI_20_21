@@ -15,8 +15,40 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        //
         Schema::enableForeignKeyConstraints();
+
+        seedEspecialidades() {
+
+            foreach (self::$arrayEspecialidades as $especialidad) {
+                $e = new Especialidad;
+                $e->nombre = $especialidad;
+            }
+
+        }
+
+        seedCiclos() {
+
+            foreach (self::$arrayCiclos as $ciclo) {
+                $c = new Ciclo;
+                $c->nombre = $ciclo['nombre'];
+                $c->grado = $ciclo['grado'];
+            }
+
+        }
+
+        seedModulos() {
+
+            foreach (self::$arrayModulos as $modulo) {
+                if($modulo['ciclo'] == "6"){
+
+                    $c = new Ciclo;
+                    $c->nombre = $modulo['nombre'];
+                    $c->especialidad_id = $modulo['especialidad'];
+                    $c->ciclo_id = $modulo['ciclo'];
+                    
+                }
+            }
+        }
     }
 
     private static $arrayEspecialidades = ['Informática', 'Sistemas y Aplicaciones Informáticas'];
